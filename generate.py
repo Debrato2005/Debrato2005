@@ -101,3 +101,33 @@ def generate(
         ),
         encoding="utf-8",
     )
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Generate dynamic GitHub profile SVGs"
+    )
+
+    parser.add_argument(
+        "--profile",
+        default="profile.yml",
+    )
+
+    parser.add_argument(
+        "--output",
+        default=".",
+    )
+
+    args = parser.parse_args()
+
+    generate(
+        profile_path=Path(args.profile),
+        output_dir=Path(args.output),
+        token=(
+            os.getenv("GITHUB_TOKEN")
+            or os.getenv("ACCESS_TOKEN")
+        ),
+    )
+
+
+if __name__ == "__main__":
+    main()
