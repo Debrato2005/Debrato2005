@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="860" height="506" viewBox="0 0 860 506" role="img" aria-label="Debrato Ghosh GitHub profile">
+<style>
+  .bg { fill: #0d1117; }
+  text { fill: #e6edf3; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace; font-size: 15px; }
+  .heading { fill: #58a6ff; font-size: 20px; font-weight: 700; }
+  .section { fill: #58a6ff; font-size: 16px; font-weight: 700; }
+  .label, .muted { fill: #8b949e; }
+  .project { font-weight: 700; }
+  .value-right { text-anchor: end; }
+</style>
+<rect class="bg" width="100%" height="100%" rx="12" />
+  <text x="28" y="42" class="heading">debrato2005@github</text>
+  <text x="28" y="76" class="label">name</text>
+  <text x="180" y="76" class="value">Debrato Ghosh</text>
+  <text x="28" y="102" class="label">role</text>
+  <text x="180" y="102" class="value">Information Technology Student</text>
+  <text x="28" y="128" class="label">host</text>
+  <text x="180" y="128" class="value">Manipal Institute of Technology</text>
+  <text x="28" y="154" class="label">os</text>
+  <text x="180" y="154" class="value">Windows / Ubuntu / CachyOS / Pop!_OS</text>
+  <text x="28" y="180" class="label">uptime</text>
+  <text x="180" y="180" class="value">offline</text>
+  <text x="28" y="222" class="section">~/projects</text>
+  <text x="44" y="252" class="project">Smolink</text>
+  <text x="180" y="252" class="muted">Distributed URL Shortener</text>
+  <text x="650" y="252" class="value-right">0 commits</text>
+  <text x="44" y="282" class="project">Cryptalis</text>
+  <text x="180" y="282" class="muted">Application-Layer Data Security</text>
+  <text x="650" y="282" class="value-right">0 commits</text>
+  <text x="44" y="312" class="project">OncoSyn</text>
+  <text x="180" y="312" class="muted">Escape-Aware Neoantigen Target Discovery</text>
+  <text x="650" y="312" class="value-right">0 commits</text>
+  <text x="28" y="360" class="section">github --stats</text>
+  <text x="44" y="388" class="label">repositories</text>
+  <text x="300" y="388" class="value">0</text>
+  <text x="44" y="416" class="label">commits</text>
+  <text x="300" y="416" class="value">0</text>
+  <text x="44" y="444" class="label">stars</text>
+  <text x="300" y="444" class="value">0</text>
+  <text x="44" y="472" class="label">followers</text>
+  <text x="300" y="472" class="value">0</text>
+</svg>
