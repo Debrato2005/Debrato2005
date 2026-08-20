@@ -2,10 +2,10 @@ identity:
   name: "Debrato Ghosh"
   username: "debrato2005"
   github_username: "Debrato2005"
-  role: "Information Technology Student"
+  role: "IT Student @ MIT Manipal"
   institution: "Manipal Institute of Technology"
   location: "Manipal, India"
-  tagline: "Backend Engineering · AI/ML · Cybersecurity · Research"
+  tagline: "Backend · AI/ML · Security · Research"
 
 system:
   host: "Manipal Institute of Technology"
@@ -15,22 +15,41 @@ system:
     - "CachyOS"
     - "Pop!_OS"
 
+development:
+  tools:
+    - "FastAPI"
+    - "PostgreSQL"
+    - "Redis"
+    - "Docker"
+    - "Git"
+    - "Linux"
+    - "PyTorch"
+
+  ide:
+    - "VS Code"
+
+  status: "Open to Research / SDE Internships"
+
 languages:
   programming:
-    - "Python"
-    - "C++"
     - "C"
+    - "C++"
     - "Java"
+    - "Python"
     - "SQL"
+
   real:
     - "English"
-    # Add the other languages you want shown here.
+    - "Hindi"
+    - "Bengali"
+    - "Marathi"
+    - "Gujarati"
 
 hobbies:
-  - "Astronomy"
-  - "Astrophotography"
   - "Photography"
-  - "Image Processing"
+  - "Astrophotography"
+  - "Gym"
+  - "Swimming"
 
 projects:
   - id: "smolink"
@@ -40,24 +59,27 @@ projects:
 
   - id: "cryptalis"
     name: "Cryptalis"
-    tagline: "Application-Layer Data Security"
+    tagline: "Data-Layer Encryption & Key Lifecycle"
     repository: "Debrato2005/cryptalis"
 
   - id: "oncosyn"
     name: "OncoSyn"
-    tagline: "Escape-Aware Neoantigen Target Discovery"
+    tagline: "Neoantigen Portfolios for Tumor Heterogeneity"
     repository: "Debrato2005/oncosyn"
 
 contact:
   email:
     personal: "debrato2005@gmail.com"
-    college: "TODO"
+    college: "debrato.mitmpl2024@learner.manipal.edu"
+
   github:
     handle: "@debrato2005"
     url: "https://github.com/Debrato2005"
+
   linkedin:
     handle: "/in/debrato-ghosh"
     url: "https://linkedin.com/in/debrato-ghosh"
+
   x:
     handle: "@debratoG"
     url: "https://x.com/debratoG"
