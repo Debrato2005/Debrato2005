@@ -127,9 +127,9 @@ wheels = [
 ]
 
 [[package]]
-name = "debrato2005"
+name = "debrato-profile"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "pyyaml" },
     { name = "requests" },

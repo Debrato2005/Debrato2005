@@ -19,24 +19,24 @@
   <text x="28" y="154" class="label">os</text>
   <text x="180" y="154" class="value">Windows / Ubuntu / CachyOS / Pop!_OS</text>
   <text x="28" y="180" class="label">uptime</text>
-  <text x="180" y="180" class="value">offline</text>
+  <text x="180" y="180" class="value">2y 24d</text>
   <text x="28" y="222" class="section">~/projects</text>
   <text x="44" y="252" class="project">Smolink</text>
   <text x="180" y="252" class="muted">Distributed URL Shortener</text>
-  <text x="650" y="252" class="value-right">0 commits</text>
+  <text x="650" y="252" class="value-right">17 commits</text>
   <text x="44" y="282" class="project">Cryptalis</text>
   <text x="180" y="282" class="muted">Application-Layer Data Security</text>
-  <text x="650" y="282" class="value-right">0 commits</text>
+  <text x="650" y="282" class="value-right">2 commits</text>
   <text x="44" y="312" class="project">OncoSyn</text>
   <text x="180" y="312" class="muted">Escape-Aware Neoantigen Target Discovery</text>
-  <text x="650" y="312" class="value-right">0 commits</text>
+  <text x="650" y="312" class="value-right">4 commits</text>
   <text x="28" y="360" class="section">github --stats</text>
   <text x="44" y="388" class="label">repositories</text>
-  <text x="300" y="388" class="value">0</text>
+  <text x="300" y="388" class="value">21</text>
   <text x="44" y="416" class="label">commits</text>
-  <text x="300" y="416" class="value">0</text>
+  <text x="300" y="416" class="value">243</text>
   <text x="44" y="444" class="label">stars</text>
-  <text x="300" y="444" class="value">0</text>
+  <text x="300" y="444" class="value">9</text>
   <text x="44" y="472" class="label">followers</text>
-  <text x="300" y="472" class="value">0</text>
+  <text x="300" y="472" class="value">18</text>
 </svg>

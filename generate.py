@@ -5,7 +5,7 @@ import os
 from pathlib import Path
 from typing import Any
 
-from github import fetch_profile_data
+from github_client import fetch_profile_data
 from svg import render_svg
 from profile_config import load_profile
 from stats import aggregate_stats, format_uptime
