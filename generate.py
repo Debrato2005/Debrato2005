@@ -1,0 +1,60 @@
+from __future__ import annotations
+
+import argparse
+import os
+from pathlib import Path
+from typing import Any
+
+from .github import fetch_profile_data
+from .profile import load_profile
+from .stats import aggregate_stats, format_uptime
+from .svg import render_svg
+
+
+def project_commit_map(projects: list[dict[str, Any]], repos: list[dict[str, Any]]) -> dict[str, int]:
+    by_repo = {repo["nameWithOwner"].lower(): int(repo.get("commits", 0)) for repo in repos}
+    result: dict[str, int] = {}
+    for project in projects:
+        repository = project.get("repository")
+        result[project["id"]] = by_repo.get(str(repository).lower(), 0) if repository else 0
+    return result
+
+
+def generate(profile_path: Path, output_dir: Path, token: str | None = None) -> None:
+    profile = load_profile(profile_path)
+    username = profile.get("identity", {}).get("github_username") or profile["identity"]["username"]
+
+    if token:
+        repos, followers, created_at = fetch_profile_data(username, token)
+        uptime = format_uptime(created_at)
+    else:
+        repos, followers, uptime = [], 0, "offline"
+
+    stats = aggregate_stats(repos, followers)
+    projects = profile.get("projects", [])
+    commits = project_commit_map(projects, repos)
+
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "dark_mode.svg").write_text(
+        render_svg(profile, stats, commits, theme="dark", uptime=uptime), encoding="utf-8"
+    )
+    (output_dir / "light_mode.svg").write_text(
+        render_svg(profile, stats, commits, theme="light", uptime=uptime), encoding="utf-8"
+    )
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Generate dynamic GitHub profile SVGs")
+    parser.add_argument("--profile", default="profile.yml")
+    parser.add_argument("--output", default=".")
+    args = parser.parse_args()
+
+    generate(
+        profile_path=Path(args.profile),
+        output_dir=Path(args.output),
+        token=os.getenv("GITHUB_TOKEN") or os.getenv("ACCESS_TOKEN"),
+    )
+
+
+if __name__ == "__main__":
+    main()

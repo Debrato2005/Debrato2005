@@ -1,0 +1,63 @@
+identity:
+  name: "Debrato Ghosh"
+  username: "debrato2005"
+  github_username: "Debrato2005"
+  role: "Information Technology Student"
+  institution: "Manipal Institute of Technology"
+  location: "Manipal, India"
+  tagline: "Backend Engineering · AI/ML · Cybersecurity · Research"
+
+system:
+  host: "Manipal Institute of Technology"
+  os:
+    - "Windows"
+    - "Ubuntu"
+    - "CachyOS"
+    - "Pop!_OS"
+
+languages:
+  programming:
+    - "Python"
+    - "C++"
+    - "C"
+    - "Java"
+    - "SQL"
+  real:
+    - "English"
+    # Add the other languages you want shown here.
+
+hobbies:
+  - "Astronomy"
+  - "Astrophotography"
+  - "Photography"
+  - "Image Processing"
+
+projects:
+  - id: "smolink"
+    name: "Smolink"
+    tagline: "Distributed URL Shortener"
+    repository: "Debrato2005/smolink"
+
+  - id: "cryptalis"
+    name: "Cryptalis"
+    tagline: "Application-Layer Data Security"
+    repository: "Debrato2005/cryptalis"
+
+  - id: "oncosyn"
+    name: "OncoSyn"
+    tagline: "Escape-Aware Neoantigen Target Discovery"
+    repository: "Debrato2005/oncosyn"
+
+contact:
+  email:
+    personal: "debrato2005@gmail.com"
+    college: "TODO"
+  github:
+    handle: "@debrato2005"
+    url: "https://github.com/Debrato2005"
+  linkedin:
+    handle: "/in/debrato-ghosh"
+    url: "https://linkedin.com/in/debrato-ghosh"
+  x:
+    handle: "@debratoG"
+    url: "https://x.com/debratoG"
