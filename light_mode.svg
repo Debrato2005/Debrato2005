@@ -32,9 +32,9 @@
   <text x="650" y="312" class="value-right">4 commits</text>
   <text x="28" y="360" class="section">github --stats</text>
   <text x="44" y="388" class="label">repositories</text>
-  <text x="300" y="388" class="value">21</text>
+  <text x="300" y="388" class="value">14</text>
   <text x="44" y="416" class="label">commits</text>
-  <text x="300" y="416" class="value">243</text>
+  <text x="300" y="416" class="value">208</text>
   <text x="44" y="444" class="label">stars</text>
   <text x="300" y="444" class="value">9</text>
   <text x="44" y="472" class="label">followers</text>
