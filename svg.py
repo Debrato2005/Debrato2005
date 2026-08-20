@@ -7,22 +7,22 @@ from zoneinfo import ZoneInfo
 
 
 # ============================================================
-# FIXED TERMINAL GEOMETRY
+# FIXED GEOMETRY
 # ============================================================
 
-WIDTH = 985
+WIDTH = 1100
 
-PADDING_X = 30
-PADDING_TOP = 30
-PADDING_BOTTOM = 26
+PADDING_X = 34
+PADDING_TOP = 28
+PADDING_BOTTOM = 24
 
-ROW_HEIGHT = 24
-SECTION_GAP_ROWS = 1
+ROW_HEIGHT = 22
+SECTION_GAP = 12
 
-FONT_SIZE = 14
+FONT_SIZE = 16
+HEADER_FONT_SIZE = 18
 
-# Number of monospace character columns available per line.
-TOTAL_COLUMNS = 108
+TOTAL_COLUMNS = 105
 
 
 # ============================================================
@@ -46,7 +46,7 @@ def _last_updated() -> str:
     return now.strftime("%d %b %Y · %H:%M IST")
 
 
-def _plain_text(
+def _text(
     y: int,
     value: object,
     css_class: str = "normal",
@@ -57,20 +57,11 @@ def _plain_text(
     )
 
 
-def _row(
+def _leader_row(
     y: int,
     label: str,
     value: object,
 ) -> str:
-    """
-    Deterministic terminal row.
-
-    Example:
-        OS ................................ Windows / Ubuntu
-
-    Dot count is calculated strictly from TOTAL_COLUMNS.
-    """
-
     value_text = str(value)
 
     occupied = len(label) + len(value_text) + 2
@@ -95,22 +86,16 @@ def _section(
     y: int,
     title: str,
 ) -> str:
-    """
-    Example:
-
-    - Projects -----------------------------------------------------
-    """
-
     prefix = f"- {title} "
 
-    filler_length = max(
+    filler = max(
         3,
         TOTAL_COLUMNS - len(prefix),
     )
 
     return (
         f'<text x="{PADDING_X}" y="{y}" class="section">'
-        f'{_esc(prefix + ("-" * filler_length))}'
+        f'{_esc(prefix + ("-" * filler))}'
         f"</text>"
     )
 
@@ -122,12 +107,6 @@ def _stats_row(
     right_label: str,
     right_value: object,
 ) -> str:
-    """
-    Fixed two-column stats line.
-
-    Repos ........ 21    |    Commits ........ 247
-    """
-
     return (
         f'<text x="{PADDING_X}" y="{y}">'
         f'<tspan class="key">{_esc(left_label)}</tspan>'
@@ -137,6 +116,54 @@ def _stats_row(
         f'<tspan class="key">{_esc(right_label)}</tspan>'
         f'<tspan class="dots"> ........ </tspan>'
         f'<tspan class="value">{_esc(right_value)}</tspan>'
+        f"</text>"
+    )
+
+
+def _loc_row(
+    y: int,
+    loc: object,
+    additions: object | None,
+    deletions: object | None,
+) -> str:
+    if additions is None or deletions is None:
+        return _leader_row(
+            y,
+            "LOC",
+            _number(loc),
+        )
+
+    loc_text = _number(loc)
+    add_text = _number(additions)
+    del_text = _number(deletions)
+
+    label = "LOC"
+
+    occupied = (
+        len(label)
+        + len(loc_text)
+        + len(add_text)
+        + len(del_text)
+        + 12
+    )
+
+    dot_count = max(
+        3,
+        TOTAL_COLUMNS - occupied,
+    )
+
+    dots = "." * dot_count
+
+    return (
+        f'<text x="{PADDING_X}" y="{y}">'
+        f'<tspan class="key">{label}</tspan>'
+        f'<tspan class="dots"> {dots} </tspan>'
+        f'<tspan class="value">{loc_text}</tspan>'
+        f'<tspan class="normal"> (</tspan>'
+        f'<tspan class="green">+{add_text}</tspan>'
+        f'<tspan class="normal">, </tspan>'
+        f'<tspan class="red">-{del_text}</tspan>'
+        f'<tspan class="normal">)</tspan>'
         f"</text>"
     )
 
@@ -177,12 +204,12 @@ def render_svg(
 
         key_color = "#ffa657"
         value_color = "#a5d6ff"
-
         muted_color = "#616e7f"
-        border_color = "#30363d"
 
         green = "#3fb950"
         red = "#f85149"
+
+        border_color = "#30363d"
 
     else:
         background = "#ffffff"
@@ -190,31 +217,25 @@ def render_svg(
 
         key_color = "#bc4c00"
         value_color = "#0969da"
-
         muted_color = "#8c959f"
-        border_color = "#d0d7de"
 
         green = "#1a7f37"
         red = "#cf222e"
 
+        border_color = "#d0d7de"
+
     # ========================================================
-    # BUILD LOGICAL ROWS FIRST
-    #
-    # Height is determined exclusively from this structure.
+    # LOGICAL ROWS
     # ========================================================
 
-    logical_rows: list[tuple[str, Any]] = []
+    rows: list[tuple[str, Any]] = []
 
     username = identity.get(
         "username",
         identity.get("github_username", "github"),
     )
 
-    # --------------------------------------------------------
-    # HEADER
-    # --------------------------------------------------------
-
-    logical_rows.append(
+    rows.append(
         (
             "header",
             f"{username}@github",
@@ -222,177 +243,161 @@ def render_svg(
     )
 
     # --------------------------------------------------------
-    # SYSTEM
+    # IDENTITY / SYSTEM
     # --------------------------------------------------------
 
-    logical_rows.append(
-        (
-            "row",
+    rows.extend(
+        [
             (
-                "Name",
-                identity.get("name", ""),
-            ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
-            (
-                "Role",
-                identity.get("role", ""),
-            ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
-            (
-                "Location",
-                identity.get("location", ""),
-            ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
-            (
-                "OS",
-                " / ".join(
-                    system.get("os", [])
+                "row",
+                (
+                    "Name",
+                    identity.get("name", ""),
                 ),
             ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
             (
-                "Uptime",
-                uptime,
+                "row",
+                (
+                    "Role",
+                    identity.get("role", ""),
+                ),
             ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
             (
-                "Host",
-                system.get(
-                    "host",
+                "row",
+                (
+                    "Location",
+                    identity.get("location", ""),
+                ),
+            ),
+            (
+                "row",
+                (
+                    "OS",
+                    " / ".join(
+                        system.get("os", [])
+                    ),
+                ),
+            ),
+            (
+                "row",
+                (
+                    "Uptime",
+                    uptime,
+                ),
+            ),
+            (
+                "row",
+                (
+                    "Host",
+                    system.get(
+                        "host",
+                        identity.get(
+                            "institution",
+                            "",
+                        ),
+                    ),
+                ),
+            ),
+            (
+                "row",
+                (
+                    "Focus",
                     identity.get(
-                        "institution",
+                        "tagline",
                         "",
                     ),
                 ),
             ),
-        )
+        ]
     )
 
-    logical_rows.append(
-        (
-            "row",
-            (
-                "Focus",
-                identity.get("tagline", ""),
-            ),
-        )
-    )
+    rows.append(("gap", None))
 
     # --------------------------------------------------------
     # DEVELOPMENT
     # --------------------------------------------------------
 
-    logical_rows.append(("gap", None))
-
-    tools = " · ".join(
-        development.get("tools", [])
-    )
-
-    ide = " · ".join(
-        development.get("ide", [])
-    )
-
-    logical_rows.append(
-        (
-            "row",
+    rows.extend(
+        [
             (
-                "Tools",
-                tools,
-            ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
-            (
-                "IDE",
-                ide,
-            ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
-            (
-                "Status",
-                development.get(
-                    "status",
-                    "",
+                "row",
+                (
+                    "Tools",
+                    " · ".join(
+                        development.get(
+                            "tools",
+                            [],
+                        )
+                    ),
                 ),
             ),
-        )
+            (
+                "row",
+                (
+                    "IDE",
+                    " · ".join(
+                        development.get(
+                            "ide",
+                            [],
+                        )
+                    ),
+                ),
+            ),
+            (
+                "row",
+                (
+                    "Status",
+                    development.get(
+                        "status",
+                        "",
+                    ),
+                ),
+            ),
+        ]
     )
+
+    rows.append(("gap", None))
 
     # --------------------------------------------------------
     # LANGUAGES
     # --------------------------------------------------------
 
-    logical_rows.append(("gap", None))
-
-    logical_rows.append(
-        (
-            "row",
+    rows.extend(
+        [
             (
-                "Languages.Programming",
-                " · ".join(
-                    languages.get(
-                        "programming",
-                        [],
-                    )
+                "row",
+                (
+                    "Languages.Programming",
+                    " · ".join(
+                        languages.get(
+                            "programming",
+                            [],
+                        )
+                    ),
                 ),
             ),
-        )
-    )
-
-    logical_rows.append(
-        (
-            "row",
             (
-                "Languages.Real",
-                " · ".join(
-                    languages.get(
-                        "real",
-                        [],
-                    )
+                "row",
+                (
+                    "Languages.Real",
+                    " · ".join(
+                        languages.get(
+                            "real",
+                            [],
+                        )
+                    ),
                 ),
             ),
-        )
+        ]
     )
+
+    rows.append(("gap", None))
 
     # --------------------------------------------------------
     # HOBBIES
     # --------------------------------------------------------
 
-    logical_rows.append(("gap", None))
-
-    logical_rows.append(
+    rows.append(
         (
             "row",
             (
@@ -402,13 +407,13 @@ def render_svg(
         )
     )
 
+    rows.append(("gap", None))
+
     # --------------------------------------------------------
     # PROJECTS
     # --------------------------------------------------------
 
-    logical_rows.append(("gap", None))
-
-    logical_rows.append(
+    rows.append(
         (
             "section",
             "Projects",
@@ -423,7 +428,7 @@ def render_svg(
             0,
         )
 
-        logical_rows.append(
+        rows.append(
             (
                 "row",
                 (
@@ -436,36 +441,33 @@ def render_svg(
             )
         )
 
+    rows.append(("gap", None))
+
     # --------------------------------------------------------
     # CONTACT
     # --------------------------------------------------------
 
-    logical_rows.append(("gap", None))
-
-    logical_rows.append(
+    rows.append(
         (
             "section",
             "Contact",
         )
     )
 
-    email = contact.get(
-        "email",
-        {},
-    )
+    emails = contact.get("email", {})
 
-    personal_email = email.get(
+    personal_email = emails.get(
         "personal",
         "",
     )
 
-    college_email = email.get(
+    college_email = emails.get(
         "college",
         "",
     )
 
     if personal_email:
-        logical_rows.append(
+        rows.append(
             (
                 "row",
                 (
@@ -476,7 +478,7 @@ def render_svg(
         )
 
     if college_email:
-        logical_rows.append(
+        rows.append(
             (
                 "row",
                 (
@@ -495,7 +497,7 @@ def render_svg(
     )
 
     if linkedin:
-        logical_rows.append(
+        rows.append(
             (
                 "row",
                 (
@@ -514,7 +516,7 @@ def render_svg(
     )
 
     if x_handle:
-        logical_rows.append(
+        rows.append(
             (
                 "row",
                 (
@@ -524,20 +526,20 @@ def render_svg(
             )
         )
 
+    rows.append(("gap", None))
+
     # --------------------------------------------------------
     # GITHUB STATS
     # --------------------------------------------------------
 
-    logical_rows.append(("gap", None))
-
-    logical_rows.append(
+    rows.append(
         (
             "section",
             "GitHub Stats",
         )
     )
 
-    logical_rows.append(
+    rows.append(
         (
             "stats",
             (
@@ -548,10 +550,10 @@ def render_svg(
                         0,
                     )
                 ),
-                "Commits",
+                "Stars",
                 _number(
                     stats.get(
-                        "commits",
+                        "stars",
                         0,
                     )
                 ),
@@ -559,14 +561,14 @@ def render_svg(
         )
     )
 
-    logical_rows.append(
+    rows.append(
         (
             "stats",
             (
-                "Stars",
+                "Commits",
                 _number(
                     stats.get(
-                        "stars",
+                        "commits",
                         0,
                     )
                 ),
@@ -581,45 +583,27 @@ def render_svg(
         )
     )
 
-    # LOC is displayed only if the backend actually provides it.
     if "loc" in stats:
-
-        loc = _number(
-            stats.get("loc", 0)
-        )
-
-        additions = stats.get(
-            "additions"
-        )
-
-        deletions = stats.get(
-            "deletions"
-        )
-
-        if (
-            additions is not None
-            and deletions is not None
-        ):
-            loc_value = (
-                f"{loc} "
-                f"(+{_number(additions)} / "
-                f"-{_number(deletions)})"
-            )
-        else:
-            loc_value = loc
-
-        logical_rows.append(
+        rows.append(
             (
-                "row",
+                "loc",
                 (
-                    "LOC",
-                    loc_value,
+                    stats.get(
+                        "loc",
+                        0,
+                    ),
+                    stats.get(
+                        "additions"
+                    ),
+                    stats.get(
+                        "deletions"
+                    ),
                 ),
             )
         )
 
     else:
-        logical_rows.append(
+        rows.append(
             (
                 "row",
                 (
@@ -629,13 +613,13 @@ def render_svg(
             )
         )
 
+    rows.append(("gap", None))
+
     # --------------------------------------------------------
     # LAST UPDATED
     # --------------------------------------------------------
 
-    logical_rows.append(("gap", None))
-
-    logical_rows.append(
+    rows.append(
         (
             "row",
             (
@@ -649,36 +633,32 @@ def render_svg(
     # DETERMINISTIC HEIGHT
     # ========================================================
 
-    rendered_row_units = 0
+    content_height = 0
 
-    for row_type, _ in logical_rows:
-
+    for row_type, _ in rows:
         if row_type == "gap":
-            rendered_row_units += SECTION_GAP_ROWS
+            content_height += SECTION_GAP
         else:
-            rendered_row_units += 1
+            content_height += ROW_HEIGHT
 
     HEIGHT = (
         PADDING_TOP
-        + rendered_row_units * ROW_HEIGHT
+        + content_height
         + PADDING_BOTTOM
     )
 
     # ========================================================
-    # RENDER ROWS
+    # RENDER
     # ========================================================
 
     elements: list[str] = []
 
     y = PADDING_TOP + FONT_SIZE
 
-    for row_type, payload in logical_rows:
+    for row_type, payload in rows:
 
         if row_type == "gap":
-            y += (
-                ROW_HEIGHT
-                * SECTION_GAP_ROWS
-            )
+            y += SECTION_GAP
             continue
 
         if row_type == "header":
@@ -693,7 +673,7 @@ def render_svg(
             )
 
             elements.append(
-                _plain_text(
+                _text(
                     y,
                     f"{header} "
                     + ("-" * filler),
@@ -715,7 +695,7 @@ def render_svg(
             label, value = payload
 
             elements.append(
-                _row(
+                _leader_row(
                     y,
                     str(label),
                     value,
@@ -741,12 +721,25 @@ def render_svg(
                 )
             )
 
+        elif row_type == "loc":
+
+            loc, additions, deletions = payload
+
+            elements.append(
+                _loc_row(
+                    y,
+                    loc,
+                    additions,
+                    deletions,
+                )
+            )
+
         y += ROW_HEIGHT
 
     body = "\n".join(elements)
 
     # ========================================================
-    # FINAL SVG
+    # SVG
     # ========================================================
 
     return f"""<svg
@@ -777,7 +770,7 @@ def render_svg(
 
     .header {{
         fill: {foreground};
-        font-size: 16px;
+        font-size: {HEADER_FONT_SIZE}px;
         font-weight: 600;
     }}
 
@@ -802,6 +795,10 @@ def render_svg(
         fill: {muted_color};
     }}
 
+    .normal {{
+        fill: {foreground};
+    }}
+
     .green {{
         fill: {green};
     }}
@@ -817,7 +814,7 @@ def render_svg(
     y="0"
     width="{WIDTH}"
     height="{HEIGHT}"
-    rx="15"
+    rx="12"
     fill="{background}"
     stroke="{border_color}"
     stroke-width="1"

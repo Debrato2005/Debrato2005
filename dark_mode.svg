@@ -1,8 +1,8 @@
 <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="985"
-    height="896"
-    viewBox="0 0 985 896"
+    width="1100"
+    height="752"
+    viewBox="0 0 1100 752"
     role="img"
     aria-label="Debrato Ghosh GitHub profile"
 >
@@ -18,7 +18,7 @@
             "Liberation Mono",
             monospace;
 
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 400;
 
         fill: #c9d1d9;
@@ -26,7 +26,7 @@
 
     .header {
         fill: #c9d1d9;
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 600;
     }
 
@@ -51,6 +51,10 @@
         fill: #616e7f;
     }
 
+    .normal {
+        fill: #c9d1d9;
+    }
+
     .green {
         fill: #3fb950;
     }
@@ -64,41 +68,41 @@
 <rect
     x="0"
     y="0"
-    width="985"
-    height="896"
-    rx="15"
+    width="1100"
+    height="752"
+    rx="12"
     fill="#161b22"
     stroke="#30363d"
     stroke-width="1"
 />
 
-<text x="30" y="44" class="header">debrato2005@github -----------------------------------------------------------------------------------------</text>
-<text x="30" y="68"><tspan class="key">Name</tspan><tspan class="dots"> ......................................................................................... </tspan><tspan class="value">Debrato Ghosh</tspan></text>
-<text x="30" y="92"><tspan class="key">Role</tspan><tspan class="dots"> .............................................................................. </tspan><tspan class="value">IT Student @ MIT Manipal</tspan></text>
-<text x="30" y="116"><tspan class="key">Location</tspan><tspan class="dots"> .................................................................................... </tspan><tspan class="value">Manipal, India</tspan></text>
-<text x="30" y="140"><tspan class="key">OS</tspan><tspan class="dots"> .................................................................... </tspan><tspan class="value">Windows / Ubuntu / CachyOS / Pop!_OS</tspan></text>
-<text x="30" y="164"><tspan class="key">Uptime</tspan><tspan class="dots"> .............................................................................................. </tspan><tspan class="value">2y 24d</tspan></text>
-<text x="30" y="188"><tspan class="key">Host</tspan><tspan class="dots"> ....................................................................... </tspan><tspan class="value">Manipal Institute of Technology</tspan></text>
-<text x="30" y="212"><tspan class="key">Focus</tspan><tspan class="dots"> ................................................................ </tspan><tspan class="value">Backend · AI/ML · Security · Research</tspan></text>
-<text x="30" y="260"><tspan class="key">Tools</tspan><tspan class="dots"> ........................................ </tspan><tspan class="value">FastAPI · PostgreSQL · Redis · Docker · Git · Linux · PyTorch</tspan></text>
-<text x="30" y="284"><tspan class="key">IDE</tspan><tspan class="dots"> ................................................................................................ </tspan><tspan class="value">VS Code</tspan></text>
-<text x="30" y="308"><tspan class="key">Status</tspan><tspan class="dots"> .................................................................. </tspan><tspan class="value">Open to Research / SDE Internships</tspan></text>
-<text x="30" y="356"><tspan class="key">Languages.Programming</tspan><tspan class="dots"> ........................................................ </tspan><tspan class="value">C · C++ · Java · Python · SQL</tspan></text>
-<text x="30" y="380"><tspan class="key">Languages.Real</tspan><tspan class="dots"> .............................................. </tspan><tspan class="value">English · Hindi · Bengali · Marathi · Gujarati</tspan></text>
-<text x="30" y="428"><tspan class="key">Hobbies</tspan><tspan class="dots"> .................................................... </tspan><tspan class="value">Photography · Astrophotography · Gym · Swimming</tspan></text>
-<text x="30" y="476" class="section">- Projects -------------------------------------------------------------------------------------------------</text>
-<text x="30" y="500"><tspan class="key">Smolink</tspan><tspan class="dots"> ......................................................................................... </tspan><tspan class="value">17 commits</tspan></text>
-<text x="30" y="524"><tspan class="key">Cryptalis</tspan><tspan class="dots"> ........................................................................................ </tspan><tspan class="value">2 commits</tspan></text>
-<text x="30" y="548"><tspan class="key">OncoSyn</tspan><tspan class="dots"> .......................................................................................... </tspan><tspan class="value">4 commits</tspan></text>
-<text x="30" y="596" class="section">- Contact --------------------------------------------------------------------------------------------------</text>
-<text x="30" y="620"><tspan class="key">Email.Personal</tspan><tspan class="dots"> ....................................................................... </tspan><tspan class="value">debrato2005@gmail.com</tspan></text>
-<text x="30" y="644"><tspan class="key">Email.College</tspan><tspan class="dots"> ....................................................... </tspan><tspan class="value">debrato.mitmpl2024@learner.manipal.edu</tspan></text>
-<text x="30" y="668"><tspan class="key">LinkedIn</tspan><tspan class="dots"> ................................................................................. </tspan><tspan class="value">/in/debrato-ghosh</tspan></text>
-<text x="30" y="692"><tspan class="key">X</tspan><tspan class="dots"> ................................................................................................ </tspan><tspan class="value">@debratoG</tspan></text>
-<text x="30" y="740" class="section">- GitHub Stats ---------------------------------------------------------------------------------------------</text>
-<text x="30" y="764"><tspan class="key">Repos</tspan><tspan class="dots"> ........ </tspan><tspan class="value">21</tspan><tspan class="divider">    |    </tspan><tspan class="key">Commits</tspan><tspan class="dots"> ........ </tspan><tspan class="value">247</tspan></text>
-<text x="30" y="788"><tspan class="key">Stars</tspan><tspan class="dots"> ........ </tspan><tspan class="value">9</tspan><tspan class="divider">    |    </tspan><tspan class="key">Followers</tspan><tspan class="dots"> ........ </tspan><tspan class="value">18</tspan></text>
-<text x="30" y="812"><tspan class="key">LOC</tspan><tspan class="dots"> ...................................................................................................... </tspan><tspan class="value">—</tspan></text>
-<text x="30" y="860"><tspan class="key">Last Updated</tspan><tspan class="dots"> ....................................................................... </tspan><tspan class="value">20 Aug 2026 · 18:04 IST</tspan></text>
+<text x="34" y="44" class="header">debrato2005@github --------------------------------------------------------------------------------------</text>
+<text x="34" y="66"><tspan class="key">Name</tspan><tspan class="dots"> ...................................................................................... </tspan><tspan class="value">Debrato Ghosh</tspan></text>
+<text x="34" y="88"><tspan class="key">Role</tspan><tspan class="dots"> ........................................................................... </tspan><tspan class="value">IT Student @ MIT Manipal</tspan></text>
+<text x="34" y="110"><tspan class="key">Location</tspan><tspan class="dots"> ................................................................................. </tspan><tspan class="value">Manipal, India</tspan></text>
+<text x="34" y="132"><tspan class="key">OS</tspan><tspan class="dots"> ................................................................. </tspan><tspan class="value">Windows / Ubuntu / CachyOS / Pop!_OS</tspan></text>
+<text x="34" y="154"><tspan class="key">Uptime</tspan><tspan class="dots"> ........................................................................................... </tspan><tspan class="value">2y 24d</tspan></text>
+<text x="34" y="176"><tspan class="key">Host</tspan><tspan class="dots"> .................................................................... </tspan><tspan class="value">Manipal Institute of Technology</tspan></text>
+<text x="34" y="198"><tspan class="key">Focus</tspan><tspan class="dots"> ............................................................. </tspan><tspan class="value">Backend · AI/ML · Security · Research</tspan></text>
+<text x="34" y="232"><tspan class="key">Tools</tspan><tspan class="dots"> ..................................... </tspan><tspan class="value">FastAPI · PostgreSQL · Redis · Docker · Git · Linux · PyTorch</tspan></text>
+<text x="34" y="254"><tspan class="key">IDE</tspan><tspan class="dots"> ............................................................................................. </tspan><tspan class="value">VS Code</tspan></text>
+<text x="34" y="276"><tspan class="key">Status</tspan><tspan class="dots"> ............................................................... </tspan><tspan class="value">Open to Research / SDE Internships</tspan></text>
+<text x="34" y="310"><tspan class="key">Languages.Programming</tspan><tspan class="dots"> ..................................................... </tspan><tspan class="value">C · C++ · Java · Python · SQL</tspan></text>
+<text x="34" y="332"><tspan class="key">Languages.Real</tspan><tspan class="dots"> ........................................... </tspan><tspan class="value">English · Hindi · Bengali · Marathi · Gujarati</tspan></text>
+<text x="34" y="366"><tspan class="key">Hobbies</tspan><tspan class="dots"> ................................................. </tspan><tspan class="value">Photography · Astrophotography · Gym · Swimming</tspan></text>
+<text x="34" y="400" class="section">- Projects ----------------------------------------------------------------------------------------------</text>
+<text x="34" y="422"><tspan class="key">Smolink</tspan><tspan class="dots"> ...................................................................................... </tspan><tspan class="value">17 commits</tspan></text>
+<text x="34" y="444"><tspan class="key">Cryptalis</tspan><tspan class="dots"> ..................................................................................... </tspan><tspan class="value">2 commits</tspan></text>
+<text x="34" y="466"><tspan class="key">OncoSyn</tspan><tspan class="dots"> ....................................................................................... </tspan><tspan class="value">4 commits</tspan></text>
+<text x="34" y="500" class="section">- Contact -----------------------------------------------------------------------------------------------</text>
+<text x="34" y="522"><tspan class="key">Email.Personal</tspan><tspan class="dots"> .................................................................... </tspan><tspan class="value">debrato2005@gmail.com</tspan></text>
+<text x="34" y="544"><tspan class="key">Email.College</tspan><tspan class="dots"> .................................................... </tspan><tspan class="value">debrato.mitmpl2024@learner.manipal.edu</tspan></text>
+<text x="34" y="566"><tspan class="key">LinkedIn</tspan><tspan class="dots"> .............................................................................. </tspan><tspan class="value">/in/debrato-ghosh</tspan></text>
+<text x="34" y="588"><tspan class="key">X</tspan><tspan class="dots"> ............................................................................................. </tspan><tspan class="value">@debratoG</tspan></text>
+<text x="34" y="622" class="section">- GitHub Stats ------------------------------------------------------------------------------------------</text>
+<text x="34" y="644"><tspan class="key">Repos</tspan><tspan class="dots"> ........ </tspan><tspan class="value">21</tspan><tspan class="divider">    |    </tspan><tspan class="key">Stars</tspan><tspan class="dots"> ........ </tspan><tspan class="value">9</tspan></text>
+<text x="34" y="666"><tspan class="key">Commits</tspan><tspan class="dots"> ........ </tspan><tspan class="value">249</tspan><tspan class="divider">    |    </tspan><tspan class="key">Followers</tspan><tspan class="dots"> ........ </tspan><tspan class="value">18</tspan></text>
+<text x="34" y="688"><tspan class="key">LOC</tspan><tspan class="dots"> ................................................................................................... </tspan><tspan class="value">—</tspan></text>
+<text x="34" y="722"><tspan class="key">Last Updated</tspan><tspan class="dots"> .................................................................... </tspan><tspan class="value">20 Aug 2026 · 18:16 IST</tspan></text>
 
 </svg>
