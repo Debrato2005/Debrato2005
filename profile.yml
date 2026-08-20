@@ -53,12 +53,12 @@ hobbies:
 
 projects:
   - id: "smolink"
-    name: "Smolink"
+    name: "smolink"
     tagline: "Distributed URL Shortener"
     repository: "Debrato2005/smolink"
 
   - id: "cryptalis"
-    name: "Cryptalis"
+    name: "ryptalis"
     tagline: "Data-Layer Encryption & Key Lifecycle"
     repository: "Debrato2005/cryptalis"
 

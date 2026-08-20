@@ -107,16 +107,41 @@ def _stats_row(
     right_label: str,
     right_value: object,
 ) -> str:
+    left_label_text = f"{left_label}:"
+    right_label_text = f"{right_label}:"
+
+    left_value_text = str(left_value)
+    right_value_text = str(right_value)
+
+    separator = " | "
+
+    # Increase this to push the divider and right block further right.
+    left_columns = 50
+    right_columns = TOTAL_COLUMNS - left_columns - len(separator)
+
+    left_dot_count = max(
+        3,
+        left_columns - len(left_label_text) - len(left_value_text) - 2,
+    )
+
+    right_dot_count = max(
+        3,
+        right_columns - len(right_label_text) - len(right_value_text) - 2,
+    )
+
+    left_dots = "." * left_dot_count
+    right_dots = "." * right_dot_count
+
     return (
-        f'<text x="{PADDING_X}" y="{y}">'
-        f'<tspan class="key">{_esc(left_label)}</tspan>'
-        f'<tspan class="dots"> ........ </tspan>'
-        f'<tspan class="value">{_esc(left_value)}</tspan>'
-        f'<tspan class="divider">    |    </tspan>'
-        f'<tspan class="key">{_esc(right_label)}</tspan>'
-        f'<tspan class="dots"> ........ </tspan>'
-        f'<tspan class="value">{_esc(right_value)}</tspan>'
-        f"</text>"
+        f'<text x="{PADDING_X}" y="{y}" xml:space="preserve">'
+        f'<tspan class="key">{_esc(left_label_text)}</tspan>'
+        f'<tspan class="dots"> {left_dots} </tspan>'
+        f'<tspan class="value">{_esc(left_value_text)}</tspan>'
+        f'<tspan class="divider">{separator}</tspan>'
+        f'<tspan class="key">{_esc(right_label_text)}</tspan>'
+        f'<tspan class="dots"> {right_dots} </tspan>'
+        f'<tspan class="value">{_esc(right_value_text)}</tspan>'
+        f'</text>'
     )
 
 
@@ -126,36 +151,58 @@ def _loc_row(
     additions: object | None,
     deletions: object | None,
 ) -> str:
+    """
+    LOC uses exactly the same TOTAL_COLUMNS alignment rule as
+    Name / Role / Projects / Contact rows.
+
+    The complete LOC value group therefore ends on the same
+    right edge as the rest of the profile.
+    """
+
+    label = "LOC"
+    loc_text = _number(loc)
+
     if additions is None or deletions is None:
-        return _leader_row(
-            y,
-            "LOC",
-            _number(loc),
+        value_group = loc_text
+
+        dot_count = max(
+            3,
+            TOTAL_COLUMNS
+            - len(label)
+            - len(value_group)
+            - 2,
         )
 
-    loc_text = _number(loc)
+        dots = "." * dot_count
+
+        return (
+            f'<text x="{PADDING_X}" y="{y}" xml:space="preserve">'
+            f'<tspan class="key">{label}</tspan>'
+            f'<tspan class="dots"> {dots} </tspan>'
+            f'<tspan class="value">{loc_text}</tspan>'
+            f'</text>'
+        )
+
     add_text = _number(additions)
     del_text = _number(deletions)
 
-    label = "LOC"
-
-    occupied = (
-        len(label)
-        + len(loc_text)
-        + len(add_text)
-        + len(del_text)
-        + 12
+    value_group_plain = (
+        f"{loc_text} "
+        f"(+{add_text}, -{del_text})"
     )
 
     dot_count = max(
         3,
-        TOTAL_COLUMNS - occupied,
+        TOTAL_COLUMNS
+        - len(label)
+        - len(value_group_plain)
+        - 2,
     )
 
     dots = "." * dot_count
 
     return (
-        f'<text x="{PADDING_X}" y="{y}">'
+        f'<text x="{PADDING_X}" y="{y}" xml:space="preserve">'
         f'<tspan class="key">{label}</tspan>'
         f'<tspan class="dots"> {dots} </tspan>'
         f'<tspan class="value">{loc_text}</tspan>'
@@ -164,7 +211,7 @@ def _loc_row(
         f'<tspan class="normal">, </tspan>'
         f'<tspan class="red">-{del_text}</tspan>'
         f'<tspan class="normal">)</tspan>'
-        f"</text>"
+        f'</text>'
     )
 
 
