@@ -58,7 +58,7 @@ projects:
     repository: "Debrato2005/smolink"
 
   - id: "cryptalis"
-    name: "ryptalis"
+    name: "cryptalis"
     tagline: "Data-Layer Encryption & Key Lifecycle"
     repository: "Debrato2005/cryptalis"
 
