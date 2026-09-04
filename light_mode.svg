@@ -81,7 +81,7 @@
 <text x="34" y="88"><tspan class="key">Role</tspan><tspan class="dots"> ........................................................................... </tspan><tspan class="value">IT Student @ MIT Manipal</tspan></text>
 <text x="34" y="110"><tspan class="key">Location</tspan><tspan class="dots"> ................................................................................. </tspan><tspan class="value">Manipal, India</tspan></text>
 <text x="34" y="132"><tspan class="key">OS</tspan><tspan class="dots"> ................................................................. </tspan><tspan class="value">Windows / Ubuntu / CachyOS / Pop!_OS</tspan></text>
-<text x="34" y="154"><tspan class="key">Uptime</tspan><tspan class="dots"> ......................................................................................... </tspan><tspan class="value">2y 1m 8d</tspan></text>
+<text x="34" y="154"><tspan class="key">Uptime</tspan><tspan class="dots"> ......................................................................................... </tspan><tspan class="value">2y 1m 9d</tspan></text>
 <text x="34" y="176"><tspan class="key">Host</tspan><tspan class="dots"> .................................................................... </tspan><tspan class="value">Manipal Institute of Technology</tspan></text>
 <text x="34" y="198"><tspan class="key">Focus</tspan><tspan class="dots"> ............................................................. </tspan><tspan class="value">Backend · AI/ML · Security · Research</tspan></text>
 <text x="34" y="232"><tspan class="key">Tools</tspan><tspan class="dots"> ..................................... </tspan><tspan class="value">FastAPI · PostgreSQL · Redis · Docker · Git · Linux · PyTorch</tspan></text>
@@ -103,6 +103,6 @@
 <text x="34" y="644" xml:space="preserve"><tspan class="key">Repos:</tspan><tspan class="dots"> ........................................ </tspan><tspan class="value">16</tspan><tspan class="divider"> | </tspan><tspan class="key">Stars:</tspan><tspan class="dots"> .......................................... </tspan><tspan class="value">15</tspan></text>
 <text x="34" y="666" xml:space="preserve"><tspan class="key">Commits:</tspan><tspan class="dots"> ..................................... </tspan><tspan class="value">184</tspan><tspan class="divider"> | </tspan><tspan class="key">Followers:</tspan><tspan class="dots"> ...................................... </tspan><tspan class="value">21</tspan></text>
 <text x="34" y="688" xml:space="preserve"><tspan class="key">LOC</tspan><tspan class="dots"> ......................................................................... </tspan><tspan class="value">453,869</tspan><tspan class="normal"> (</tspan><tspan class="green">+487,566</tspan><tspan class="normal">, </tspan><tspan class="red">-33,697</tspan><tspan class="normal">)</tspan></text>
-<text x="34" y="722"><tspan class="key">Last Updated</tspan><tspan class="dots"> .................................................................... </tspan><tspan class="value">03 Sep 2026 · 13:52 IST</tspan></text>
+<text x="34" y="722"><tspan class="key">Last Updated</tspan><tspan class="dots"> .................................................................... </tspan><tspan class="value">04 Sep 2026 · 13:48 IST</tspan></text>
 
 </svg>
