@@ -52,7 +52,7 @@ def generate(
         uptime = "offline"
 
         authored_stats = {
-            "commits": 0,
+            "commits": "private",
             "additions": 0,
             "deletions": 0,
             "loc": 0,
